@@ -1,0 +1,29 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Nandeesh-Gopal/task-manager#readme",
+  "bugs": {
+    "url": "https://github.com/Nandeesh-Gopal/task-manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nandeesh-Gopal/task-manager.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.3"
+  },
+  "keywords": []
+}
