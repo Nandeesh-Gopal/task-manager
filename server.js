@@ -72,7 +72,7 @@ app.post("/login",(req,res)=>{
       const token= jwt.sign({id:user.id,email:"user.email"},"secretkey",{
         expiresIn:"1h"
       })
-      return res.json({message:"login sucess"})
+      return res.status(200).json({message:"login sucess",token:token})
     }
     else{
       return res.json({message:"invalid pass"})
@@ -80,10 +80,8 @@ app.post("/login",(req,res)=>{
   })
 })
 
-// ✅ Health check route
 app.get('/', (req, res) => {
   res.send('Server running successfully!');
 });
 
-// ✅ Start server
-app.listen(5000, () => console.log('🚀 Server running on port 5000'));
+app.listen(5000, () => console.log('Server running on port 5000'));
