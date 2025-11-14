@@ -141,6 +141,7 @@ app.post("/assign-task",verifyToken,(req,res)=>{
   const query="insert into tasks (title,description,assigned_to,assigned_by,status) values(?,?,?,?,'pending')"
   db.query(query,[title,description,member_id,leader_id],(err)=>{
     if(err){
+      console.log(err)
       return res.json({message:"some err in assigning task to member"})
     }
     return res.json({message:"task assigned successfully"})
