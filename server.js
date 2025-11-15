@@ -12,15 +12,14 @@ app.use(cors({
 }));
 
 app.use(express.json());
-// Add this test route
 app.get('/test', (req, res) => {
   res.json({ message: 'CORS is working!' });
 });
 const db = mysql.createConnection({
-  host:process.env.host,
-  user:process.env.user,
-  password:process.env.password,
-  database:process.env.database
+  host:process.env.host || 'db',
+  user:process.env.user || "root",
+  password:process.env.password || "pass",
+  database:process.env.database || "task_assigner"
 });
 
 db.connect((err) => {
