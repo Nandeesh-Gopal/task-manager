@@ -16,10 +16,10 @@ app.get('/test', (req, res) => {
   res.json({ message: 'CORS is working!' });
 });
 const db = mysql.createConnection({
-  host:process.env.host || 'db',
-  user:process.env.user || "root",
-  password:process.env.password || "pass",
-  database:process.env.database || "task_assigner"
+  host:'mysql',
+  user:"root",
+  password:"pass",
+  database:"task_assigner"
 });
 
 db.connect((err) => {
