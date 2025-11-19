@@ -6,20 +6,20 @@ const jwt = require('jsonwebtoken');
 const app = express();
 require('dotenv').config()
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://3.82.35.224:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
 app.get('/test', (req, res) => {
-  res.json({ message: 'CORS is working!' });
+  res.json({ message: 'backend working!' });
 });
 const db = mysql.createConnection({
-  host:'mysql',
-  user:"root",
-  password:"pass",
-  database:"task_assigner"
+  host:"mydb.c8r8c4u2k0dm.us-east-1.rds.amazonaws.com",
+  user:"admin",
+  password:process.env.password,
+  database:"mydb"
 });
 
 db.connect((err) => {
