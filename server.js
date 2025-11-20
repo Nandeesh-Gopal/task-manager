@@ -24,10 +24,10 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.error('❌ Error connecting to database:', err);
+    console.error('Error connecting to database:', err);
 
   } else {
-    console.log('✅ Database connected successfully');
+    console.log('Database connected successfully');
   }
 });
 function verifyToken(req,res,next){
