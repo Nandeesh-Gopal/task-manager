@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const app = express();
 require('dotenv').config()
 app.use(cors({
-  origin: 'http://3.82.35.224:3000',
+  origin: 'http://localhost:5173',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -16,9 +16,9 @@ app.get('/test', (req, res) => {
   res.json({ message: 'backend working!' });
 });
 const db = mysql.createConnection({
-  host:"mydb.c8r8c4u2k0dm.us-east-1.rds.amazonaws.com",
-  user:"admin",
-  password:process.env.password,
+  host:"localhost",
+  user:"root",
+  password:"pass",
   database:"mydb"
 });
 
@@ -30,6 +30,7 @@ db.connect((err) => {
     console.log('Database connected successfully');
   }
 });
+
 function verifyToken(req,res,next){
   const authHeader=req.headers.authorization;
   if(!authHeader)
@@ -41,6 +42,7 @@ function verifyToken(req,res,next){
    next();
   })
 }
+
 app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -110,7 +112,6 @@ app.post("/create-member",verifyToken,async (req,res)=>{
   }
   const hashed= await bcrypt.hash(password,10)
   const role= "member";
-
   const query="insert into users (email,password,role,leader_id) values(?,?,?,?)"
   db.query(query,[email,hashed,role,leader_id],(err)=>{
     if(err){
