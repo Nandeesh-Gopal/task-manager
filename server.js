@@ -57,8 +57,6 @@ app.post('/signup', async (req, res) => {
     
     const query = 'INSERT INTO users (email, password, role) VALUES (?, ?, ?)';
     db.query(query, [email, hashed, role], (err, result) => {
-     
-
       if (err) {
         console.error('Error inserting user:', err);
         if (err.code === 'ER_DUP_ENTRY') {
